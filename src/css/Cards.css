@@ -1,0 +1,40 @@
+.parentContainer {
+    width: 100%;
+}
+
+.detail svg {
+    width: 2em;
+    height: 2em;
+}
+
+
+.cards {
+    background: none;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.cards .parentContainer:nth-child(1) .CompactCard,
+.cards .parentContainer:nth-child(1) .ExpandedCard {
+    background: linear-gradient(#3cafec 0%, #006498 100%) !important;
+}
+
+.cards .parentContainer:nth-child(2) .CompactCard,
+.cards .parentContainer:nth-child(2) .ExpandedCard {
+    background: linear-gradient(#223682 0%, #0f1b48 100%) !important;
+}
+
+.cards .parentContainer:nth-child(3) .CompactCard,
+.cards .parentContainer:nth-child(3) .ExpandedCard {
+    background: linear-gradient(#f7b413 0%, #e77900 100%) !important;
+}
+
+.cards .parentContainer:nth-child(4) .CompactCard,
+.cards .parentContainer:nth-child(4) .ExpandedCard {
+    background: linear-gradient(#38c0df 50%, #177186 100%) !important;
+}
