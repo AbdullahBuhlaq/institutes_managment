@@ -9,6 +9,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import "./css/roles.css";
+import "./css/newFormStyle.css";
+import "./css/searchbar.css";
+import "./css/style.css";
+import "./css/styleReceipts.css";
+import "./css/teacher.css";
 
 function App() {
   function RedirectToHome() {
