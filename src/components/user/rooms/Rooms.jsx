@@ -42,7 +42,7 @@ function Rooms(props) {
   }, [props.search, props.rooms, cardsNumber]);
 
   async function deleteRoom(id) {
-    // const response = await fetch(`http://localhost:3001/admin-training/room/delete/${id}`, { ...requestOptions, method: "delete", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
+    // const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/room/delete/${id}`, { ...requestOptions, method: "delete", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
     // const data = await response.json();
     const data = { success: true };
     if (data.success) {

@@ -3,7 +3,7 @@ import RoleItem from "./RoleItem";
 import RoleName from "./RoleName";
 import AddRoleForm from "./AddRoleForm";
 import permission from "../../../constants/permission";
-import { trainingPermission } from "../../../constants/permission";
+import { adminPermission } from "../../../constants/permission";
 import searchOptions from "../../../constants/searchOptions";
 import selectOptions from "../../../constants/selectOptions";
 import requestOptions from "../../../constants/requestOptions";
@@ -41,7 +41,7 @@ function Roles(props) {
   }, [props.search]);
 
   async function deleteRole(id) {
-    const response = await fetch(`http://localhost:3001/${url}/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/${url}/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
     const data = await response.json();
     // const data = { success: true };
     if (data.success) {
@@ -116,8 +116,8 @@ function Roles(props) {
           )}
         </div>
 
-        {currentEdit && <RoleItem toast={props.toast} currentEdit={currentEdit} deleteRole={deleteRole} roles={props.roles} setRoles={props.setRoles} permission={trainingPermission} show={props.type == "admin-site" ? selectOptions.show : selectOptions.showIns} url={url} userInformation={props.userInformation} />}
-        {addNew && <AddRoleForm toast={props.toast} roles={props.roles} setRoles={props.setRoles} permission={permission} show={props.type == "admin-site" ? selectOptions.show : selectOptions.showIns} url={url} setCurrentEdit={setCurrentEdit} userInformation={props.userInformation} />}
+        {currentEdit && <RoleItem toast={props.toast} currentEdit={currentEdit} deleteRole={deleteRole} roles={props.roles} setRoles={props.setRoles} permission={adminPermission} show={props.type == "admin-site" ? selectOptions.show : selectOptions.showIns} url={url} userInformation={props.userInformation} />}
+        {addNew && <AddRoleForm toast={props.toast} roles={props.roles} setRoles={props.setRoles} permission={adminPermission} show={props.type == "admin-site" ? selectOptions.show : selectOptions.showIns} url={url} setCurrentEdit={setCurrentEdit} userInformation={props.userInformation} />}
       </div>
     </>
   );

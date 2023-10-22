@@ -76,7 +76,7 @@ function EditEmployeeForm(props) {
       }),
     };
     setDuringAdd(true);
-    const response = await fetch(`http://localhost:3001/admin-site/emp/update/${id}`, infoRequestOptions);
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-site/emp/update/${id}`, infoRequestOptions);
     const data = await response.json();
     if (data.success) {
       const roleId = await Promise.all(

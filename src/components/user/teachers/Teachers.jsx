@@ -31,7 +31,7 @@ function Teachers(props) {
   }, [props.search, props.teachers]);
 
   async function deleteTeacher(id) {
-    const response = await fetch(`http://localhost:3001/admin-training/teacher/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/teacher/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
     const data = await response.json();
     // const data = { success: true };
     if (data.success) {

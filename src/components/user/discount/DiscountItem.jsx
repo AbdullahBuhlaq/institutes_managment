@@ -26,7 +26,7 @@ function DiscountItem(props) {
                 <span style={{ alignSelf: "baseline" }}>
                   عدد المستفيدين :
                   <br />
-                  <span style={{ fontSize: "20px", color: textColorListTitle[parseInt((props.colorIndex + 1) / props.cardsNumber) % textColorListTitle.length] }}>{props.discount.count}</span>
+                  <span style={{ fontSize: "20px", color: textColorListTitle[parseInt((props.colorIndex + 1) / props.cardsNumber) % textColorListTitle.length] }}>{props.discount.count ? props.discount.count : 0}</span>
                 </span>
                 <CircleChartForDiscount percentage={props.discount.ratio} color={circleColor[parseInt((props.colorIndex + 1) / props.cardsNumber) % circleColor.length]} />
               </div>

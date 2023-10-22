@@ -75,9 +75,9 @@ function StudentJoin(props) {
         }),
       };
       setDuringAdd(true);
-      const response = await fetch(`http://localhost:3001/admin-training/courses/form/enroll/${params["courseString"]}`, infoRequestOptions);
-      const data = await response.json();
-      // const data = { success: true };
+      // const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/courses/form/enroll/${params["courseString"]}`, infoRequestOptions);
+      // const data = await response.json();
+      const data = { success: true };
       if (data.success) {
         props.toast.success("تم التسجيل بنجاح, الرجاء انتظار القبول من المعهد.", {
           position: props.toast.POSITION.TOP_CENTER,

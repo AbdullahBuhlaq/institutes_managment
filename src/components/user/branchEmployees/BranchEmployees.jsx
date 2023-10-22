@@ -72,7 +72,7 @@ function BranchEmployees(props) {
   }, [props.search, props.employees]);
 
   async function deleteEmployee(id) {
-    const response = await fetch(`http://localhost:3001/admin-training/emp/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/emp/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
     const data = await response.json();
     if (data.success) {
       delete props.employees[props.branch][id];

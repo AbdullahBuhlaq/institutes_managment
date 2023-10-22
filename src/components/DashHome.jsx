@@ -52,7 +52,7 @@ function DashHome(props) {
   }, [location]);
 
   async function getInstitutes() {
-    const response = await fetch("http://localhost:3001/admin-site/training-center/get-all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-site/training-center/get-all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
       let finalInstitutes = {};
@@ -78,7 +78,7 @@ function DashHome(props) {
   }
 
   async function getEmployees() {
-    const response = await fetch("http://localhost:3001/admin-site/emp/all/", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-site/emp/all/`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
       let finalEmployees = {};
@@ -97,7 +97,7 @@ function DashHome(props) {
   }
 
   async function getRoles() {
-    const response = await fetch("http://localhost:3001/admin-site/roles/all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-site/roles/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
       let finalRoles = {};
@@ -121,8 +121,8 @@ function DashHome(props) {
 
   async function getInformation() {
     await getRoles();
-    props.userInformation.show.includes("institutes") && (await getInstitutes());
-    props.userInformation.show.includes("employees") && (await getEmployees());
+    await getInstitutes();
+    await getEmployees();
     setLoaded(true);
   }
 
@@ -131,7 +131,7 @@ function DashHome(props) {
   }, []);
 
   async function logout() {
-    let response = await fetch("http://localhost:3001/auth/logout", { ...requestOptions, method: "put", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
+    let response = await fetch(`${process.env.REACT_APP_URL_STRING}/auth/logout`, { ...requestOptions, method: "put", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
     let data = await response.json();
     // let data = { success: true };
     if (data.success) {
@@ -155,7 +155,7 @@ function DashHome(props) {
             <Routes>
               {true && <Route index exact element={<Statistics toast={props.toast} rightShow={rightShow} setRightShow={setRightShow} leftShow={leftShow} setLeftShow={setLeftShow} />} />}
               {true && <Route path="statistics" exact element={<Statistics toast={props.toast} rightShow={rightShow} setRightShow={setRightShow} leftShow={leftShow} setLeftShow={setLeftShow} />} />}
-              {props.userInformation.show.includes("institutes") && (
+              {true && (
                 <Route
                   path="institutes"
                   exact
@@ -181,10 +181,8 @@ function DashHome(props) {
                   }
                 />
               )}
-              {props.userInformation.show.includes("employees") && <Route path="employees" exact element={<Employees search={search} toast={props.toast} employees={employees} setEmployees={setEmployees} userInformation={props.userInformation} roles={roles} rightShow={rightShow} setRightShow={setRightShow} leftShow={leftShow} setLeftShow={setLeftShow} setCurrentEmployee={setCurrentEmployee} />} />}
-              {props.userInformation.show.includes("roles") && (
-                <Route path="roles" exact element={<Roles search={search} toast={props.toast} roles={roles} setRoles={setRoles} employees={employees} setEmployees={setEmployees} type={"admin-site"} rightShow={rightShow} setRightShow={setRightShow} leftShow={leftShow} setLeftShow={setLeftShow} setCurrentRole={setCurrentRole} userInformation={props.userInformation} />} />
-              )}
+              {true && <Route path="employees" exact element={<Employees search={search} toast={props.toast} employees={employees} setEmployees={setEmployees} userInformation={props.userInformation} roles={roles} rightShow={rightShow} setRightShow={setRightShow} leftShow={leftShow} setLeftShow={setLeftShow} setCurrentEmployee={setCurrentEmployee} />} />}
+              {true && <Route path="roles" exact element={<Roles search={search} toast={props.toast} roles={roles} setRoles={setRoles} employees={employees} setEmployees={setEmployees} type={"admin-site"} rightShow={rightShow} setRightShow={setRightShow} leftShow={leftShow} setLeftShow={setLeftShow} setCurrentRole={setCurrentRole} userInformation={props.userInformation} />} />}
               <Route path="*" exact element={<NoPage />} />
             </Routes>
           </div>

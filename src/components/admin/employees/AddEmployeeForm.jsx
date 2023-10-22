@@ -25,7 +25,7 @@ function AddEmployeeForm(props) {
   const [employeeErrors, setEmployeeErrors] = useState({});
   const employeeSchema = {
     name: Joi.string().required().min(2).max(50).trim().messages(messages).label("اسم المدير"),
-    gender: Joi.boolean().required().messages(messages).label("الجنس"),
+    gender: Joi.string().required().messages(messages).label("الجنس"),
     email: Joi.string()
       .trim()
       .pattern(/[a-zA-Z0-9]+[a-zA-Z0-9\_\.]*(@gmail\.com)$/)
@@ -62,7 +62,7 @@ function AddEmployeeForm(props) {
       }),
     };
     setDuringAdd(true);
-    const response = await fetch("http://localhost:3001/admin-site/emp/add", infoRequestOptions);
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-site/emp/add`, infoRequestOptions);
     const data = await response.json();
     // const data = { id: 4, success: true };
     if (data.success) {

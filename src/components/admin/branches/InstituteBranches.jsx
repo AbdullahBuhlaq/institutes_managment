@@ -2,9 +2,10 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Branch from "./Branch";
 // import AddBranchForm from "./AddBranchForm";
-// import EditBranchForm from "./EditBranchForm";
+import EditBranchForm from "./EditBranchForm";
 import searchOptions from "../../../constants/searchOptions";
 import compare from "../../../functions/compare";
+import AddBranchForm from "./AddBranchForm";
 
 function InstituteBranches(props) {
   const [currentEdit, setCurrentEdit] = useState(false);
@@ -158,8 +159,8 @@ function InstituteBranches(props) {
                 }}
               ></i>
             </header>
-            {/* {currentEdit && <EditBranchForm toast={props.toast} institute={props.institute} institutes={props.institutes} setInstitutes={props.setInstitutes} currentEdit={currentEdit} setCurrentEdit={setCurrentEdit} countries={props.countries} />}
-            {addNew && <AddBranchForm toast={props.toast} institute={props.institute} institutes={props.institutes} setInstitutes={props.setInstitutes} setAddNew={setAddNew} countries={props.countries} />} */}
+            {currentEdit && <EditBranchForm toast={props.toast} institute={props.institute} institutes={props.institutes} setInstitutes={props.setInstitutes} currentEdit={currentEdit} setCurrentEdit={setCurrentEdit} countries={props.countries} />}
+            {addNew && <AddBranchForm toast={props.toast} institute={props.institute} institutes={props.institutes} setInstitutes={props.setInstitutes} setAddNew={setAddNew} countries={props.countries} />}
           </div>
         </div>
       </div>

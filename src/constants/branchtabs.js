@@ -7,8 +7,8 @@ const TABS = [
   { name: "دورات", show: "courses", icon: "fa-solid fa-chalkboard" },
   { name: "طلاب", show: "students", icon: "fa-solid fa-chalkboard-user" },
   { name: "حسومات", show: "discounts", icon: "fa-solid fa-tags" },
-  { name: "مقبوضات", show: "receipts", icon: "fa-solid fa-file-invoice-dollar" },
-  { name: "مدفوعات", show: "payments", icon: "fa-solid fa-credit-card" },
+  { name: "مدفوعات", show: "receipts", icon: "fa-solid fa-file-invoice-dollar" },
+  { name: "مقبوضات", show: "payments", icon: "fa-solid fa-credit-card" },
 ];
 
 export default TABS;

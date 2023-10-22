@@ -39,7 +39,7 @@ function EditBranchForm(props) {
       }),
     };
     setDuringAdd(true);
-    // const response = await fetch(`http://localhost:3001/admin-training/branch/update/${id}`, infoRequestOptions);
+    // const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/branch/update/${id}`, infoRequestOptions);
     // const data = await response.json();
     const data = { success: true };
     if (data.success) {

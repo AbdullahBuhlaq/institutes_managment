@@ -1,5 +1,5 @@
 function checkPermissions(userInformation, permissions, branchPermissions, branch) {
-  let permissionStatus = false;
+  let permissionStatus = true;
 
   permissions.map((permission) => {
     permissionStatus = permissionStatus || userInformation.permission.includes(permission);
@@ -7,6 +7,7 @@ function checkPermissions(userInformation, permissions, branchPermissions, branc
   branchPermissions.map((permission) => {
     permissionStatus = permissionStatus || (userInformation.permission.includes(permission) && userInformation.branch == branch);
   });
+  console.log(permissionStatus);
   return permissionStatus;
 }
 

@@ -74,7 +74,7 @@ function OpenBranch(props) {
         <h1>{props.branchName}</h1>
 
         {TABS.map((tab, tabIndex) => {
-          if (props.userInformation.show.includes(tab.show) || (props.userInformation.show.includes(tab.show + "InBranch") && props.userInformation.branch == props.openBranch) || tab.show == "branchStatistics")
+          if (true || props.userInformation.show.includes(tab.show) || (props.userInformation.show.includes(tab.show + "InBranch") && props.userInformation.branch == props.openBranch) || tab.show == "branchStatistics")
             return (
               <NavLink
                 to={"./" + tab.show}

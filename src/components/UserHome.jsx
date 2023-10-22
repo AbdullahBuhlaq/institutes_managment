@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import requestOptions from "../constants/requestOptions";
 import TABS from "../constants/userTabs";
 import Roles from "./user/roles/Roles";
-import { Route, Routes, redirect, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, json, redirect, useLocation, useNavigate } from "react-router-dom";
 import MainInstitute from "./user/branches/MainInstitute";
 import countriesFake from "../constants/countries";
 import AppLeft from "./general/AppLeft";
@@ -151,7 +151,7 @@ function UserHome(props) {
   }, [location]);
 
   async function getRoles() {
-    const response = await fetch("http://localhost:3001/admin-training/role/all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/role/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
       let finalRoles = {};
@@ -182,14 +182,16 @@ function UserHome(props) {
   }, [okGetIns]);
 
   async function getInstitute() {
-    const response = await fetch("http://localhost:3001/admin-training/my-center/info", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/my-center/info`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
       let temp = {};
       let branchesObject = [];
       await Promise.all(
         data.data.branches.map((branch) => {
-          temp[branch.id] = { ...branch, schedule: JSON.parse(branch.schedule) };
+          // JSON.parse(branch.schedule)
+          // 1: { data: [] } }
+          temp[branch.id] = { ...branch, schedule: JSON.parse(branch.schedule)=={}? { 1: { data: [] } }:JSON.parse(branch.schedule)  };
           branchesObject = [...branchesObject, { name: branch.name, value: branch.name }];
         })
       );
@@ -224,7 +226,7 @@ function UserHome(props) {
   }, [okGetEmployees]);
 
   async function getEmployees() {
-    const response = await fetch("http://localhost:3001/admin-training/emp/all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/emp/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     // const data = { success: true, data: [...employeesFake] };
     if (data.success) {
@@ -256,7 +258,7 @@ function UserHome(props) {
   }
 
   async function getRooms() {
-    // const response = await fetch("http://localhost:3001/admin-training/room/all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    // const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/room/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     // const data = await response.json();
     const data = { success: true, data: [] };
 
@@ -284,7 +286,7 @@ function UserHome(props) {
     }
   }
   async function getNotebooks() {
-    const response = await fetch("http://localhost:3001/admin-training/notebook/all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/notebook/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
 
     if (data.success) {
@@ -328,7 +330,7 @@ function UserHome(props) {
   }
 
   async function getSubjects() {
-    const response = await fetch("http://localhost:3001/admin-training/subject/all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/subject/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
 
     if (data.success) {
@@ -371,7 +373,7 @@ function UserHome(props) {
   }
 
   async function getCourses() {
-    const response = await fetch("http://localhost:3001/admin-training/courses/all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/courses/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
       let finalCourses = {};
@@ -395,7 +397,7 @@ function UserHome(props) {
   }
 
   async function getTeachers() {
-    const response = await fetch("http://localhost:3001/admin-training/teacher/all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/teacher/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
       console.log("teacher", data);
@@ -415,7 +417,7 @@ function UserHome(props) {
     }
   }
   async function getStudents() {
-    const response = await fetch("http://localhost:3001/admin-training/student/all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/student/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
       let finalStudents = {};
@@ -445,7 +447,7 @@ function UserHome(props) {
   }
 
   async function getDiscounts() {
-    const response = await fetch("http://localhost:3001/admin-training/discount/all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/discount/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
 
     if (data.success) {
@@ -486,7 +488,7 @@ function UserHome(props) {
   }
 
   async function getReceipts() {
-    const response = await fetch("http://localhost:3001/admin-training/teacher/receipts/all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/teacher/receipts/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     console.log("rece", data);
     if (data.success) {
@@ -507,7 +509,7 @@ function UserHome(props) {
     }
   }
   async function getPayments() {
-    const response = await fetch("http://localhost:3001/admin-training/student/receipts/all", { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/student/receipts/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     console.log("rece", data);
     if (data.success) {
@@ -537,7 +539,7 @@ function UserHome(props) {
   }, []);
 
   async function logout() {
-    let response = await fetch("http://localhost:3001/auth/logout", { ...requestOptions, method: "put", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
+    let response = await fetch(`${process.env.REACT_APP_URL_STRING}/auth/logout`, { ...requestOptions, method: "put", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
     let data = await response.json();
     // let data = { success: true };
     if (data.success) {

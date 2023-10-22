@@ -6,9 +6,10 @@ import messages from "../../../constants/messages";
 import requestOptions from "../../../constants/requestOptions";
 import validateForm from "../../../functions/validateForm";
 import checkPermissions from "../../../functions/checkPermissions";
+import PermissionGroup from "../../user/roles/PermissionGroup";
 
 function RoleItem(props) {
-  let index = 1;
+  const [index, setIndex] = useState(1);
   const [duringAdd, setDuringAdd] = useState(false);
 
   const [role, setRole] = useState({
@@ -41,7 +42,7 @@ function RoleItem(props) {
       }),
     };
     setDuringAdd(true);
-    const response = await fetch(`http://localhost:3001/${props.url}/update/${id}`, infoRequestOptions);
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/${props.url}/update/${id}`, infoRequestOptions);
     const data = await response.json();
     if (data.success) {
       props.setRoles({ ...props.roles, [id]: { id: id, ...newData } });
@@ -61,13 +62,17 @@ function RoleItem(props) {
       <div className="tasks-wrapper">
         <div className="header">صلاحيات التعديل</div>
         {Object.keys(props.permission).map((permissionGroup, permissionGroupIndex) => {
+          return <PermissionGroup key={permissionGroupIndex} index={index} currentEdit={props.currentEdit} setIndex={setIndex} permission={props.permission} permissionGroup={permissionGroup} permissionGroupIndex={permissionGroupIndex} role={role} setRole={setRole} roleErrors={roleErrors} setRoleErrors={setRoleErrors} roleSchema={roleSchema} />;
+        })}
+        {roleErrors["permission"]}
+        {/* {Object.keys(props.permission).map((permissionGroup, permissionGroupIndex) => {
           let a = Object.keys(props.permission[permissionGroup]).map((permissionItem, permissionIndex) => {
             index += 1;
             return <PermissionItem key={permissionIndex} id={props.currentEdit.id} index={index} permissionGroupIndex={permissionGroupIndex} permissionItem={permissionItem} permissionGroup={permissionGroup} permission={props.permission} role={role} setRole={setRole} roleErrors={roleErrors} setRoleErrors={setRoleErrors} roleSchema={roleSchema} />;
           });
           return a;
         })}
-        {roleErrors["permission"]}
+        {roleErrors["permission"]} */}
 
         <div className="header upcoming">صلاحيات القراءة</div>
         {props.show.map((showItem, showIndex) => {

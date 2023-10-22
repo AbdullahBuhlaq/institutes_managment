@@ -87,7 +87,7 @@ function RejectedStudents(props) {
         }),
       };
       setDuringAdd(true);
-      const response = await fetch(`http://localhost:3001/admin-training/courses/changeState/${id}`, infoRequestOptions);
+      const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/courses/changeState/${id}`, infoRequestOptions);
       const data = await response.json();
       // const data = { success: true, data: 4 };
       if (data.success) {
@@ -146,7 +146,7 @@ function RejectedStudents(props) {
         }),
       };
       setDuringAdd(true);
-      const response = await fetch(`http://localhost:3001/admin-training/courses/deleteStudent/${id}`, infoRequestOptions);
+      const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/courses/deleteStudent/${id}`, infoRequestOptions);
       const data = await response.json();
       // const data = { success: true, data: 4 };
       if (data.success) {

@@ -254,7 +254,7 @@ function EditCourse(props) {
       }),
     };
     setDuringAdd(true);
-    const response = await fetch(`http://localhost:3001/admin-training/courses/update/${id}`, infoRequestOptions);
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/courses/update/${id}`, infoRequestOptions);
     const data = await response.json();
     // const data = { id: 4, success: true };
     // const data = { success: true, data: 3, schedule: props.currentSchedule };

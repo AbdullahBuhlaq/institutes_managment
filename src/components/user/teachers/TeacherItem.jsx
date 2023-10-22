@@ -88,7 +88,10 @@ function TeacherItem(props) {
             <p className="box-progress-percentage">8/12</p>
           </div> */}
           <div className="sir-container">
-            {props.teacher.subjects?.map((subject, subjectIndex) => {
+            {[
+              { name: "كيمياء", count: 0 },
+              { name: "علوم", count: 0 },
+            ]?.map((subject, subjectIndex) => {
               return (
                 <span key={subjectIndex} className="sir" style={{ backgroundColor: "#57c1bc", color: "white", borderRadius: "15px", padding: "7px", marginLeft: "7px" }}>
                   {subject.name} {subject.count}

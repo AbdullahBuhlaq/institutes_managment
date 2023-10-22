@@ -53,7 +53,7 @@ function Institutes(props) {
   }, [props.search, props.institutes, cardsNumber]);
 
   async function deleteInstitute(id) {
-    const response = await fetch(`http://localhost:3001/admin-training/my-center/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/my-center/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
     const data = await response.json();
     if (data.success) {
       delete props.institutes[id];

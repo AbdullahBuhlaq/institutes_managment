@@ -8,6 +8,7 @@ import NoPage from "./pages/NoPage";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import "./css/roles.css";
 
 function App() {
   function RedirectToHome() {
@@ -24,8 +25,9 @@ function App() {
       <ToastContainer />
       <BrowserRouter>
         <Routes>
-          <Route path="/" exact element={<RedirectToHome />} />
+          {/* <Route path="/" exact element={<RedirectToHome />} /> */}
           <Route path="/studentJoin/:branchId/:courseId/:courseString" exact element={<StudentJoin toast={toast} />} />
+          <Route path="/" exact element={<Home toast={toast} />} />
           <Route path="/home/*" exact element={<Home toast={toast} />} />
           <Route path="/login" exact element={<Login toast={toast} />} />
           <Route path="/test" exact element={<Test />} />

@@ -61,7 +61,7 @@ function ReceiptItem(props) {
             })}
           </div>
           <div className="product-cell category">
-            <span className="cell-label">المبلغ المتبقي له:</span> <span className="status active">{props.receipt.remaining}</span>{" "}
+            <span className="cell-label">المبلغ المتبقي له:</span> <span className="status active">{props.receipt.remaining ? props.receipt.remaining : 20}</span>{" "}
           </div>
           <div className="product-cell price">
             <span className="cell-label">التاريخ:</span>

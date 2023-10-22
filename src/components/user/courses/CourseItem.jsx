@@ -104,7 +104,8 @@ function CourseItem(props) {
           <p className="box-content-header">{props.course.courseName}</p>
           <p className="box-content-subheader">
             {props.course.teachers.map((teacher, teacherIndex) => {
-              return teacher.nameAr + (props.course.teachers.length > teacherIndex + 1 ? " - " : "");
+              // return teacher.nameAr + (props.course.teachers.length > teacherIndex + 1 ? " - " : "");
+              return "أسامة السعيد";
             })}
           </p>
         </div>

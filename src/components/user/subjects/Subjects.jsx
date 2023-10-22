@@ -42,7 +42,7 @@ function Subjects(props) {
   }, [props.search, props.subjects, cardsNumber]);
 
   async function deleteSubject(id) {
-    const response = await fetch(`http://localhost:3001/admin-training/subject/delete/${id}`, { ...requestOptions, method: "delete", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/subject/delete/${id}`, { ...requestOptions, method: "delete", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
     const data = await response.json();
     // const data = { success: true };
     if (data.success) {

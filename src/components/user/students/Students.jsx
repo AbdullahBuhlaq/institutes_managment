@@ -42,7 +42,7 @@ function Students(props) {
   }, [props.search, props.students, cardsNumber]);
 
   async function deleteStudent(id) {
-    const response = await fetch(`http://localhost:3001/admin-training/student/delete/${id}`, { ...requestOptions, method: "delete", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/student/delete/${id}`, { ...requestOptions, method: "delete", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
     const data = await response.json();
     // const data = { success: true };
     if (data.success) {

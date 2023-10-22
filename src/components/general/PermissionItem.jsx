@@ -3,7 +3,7 @@ import colorList from "../../constants/colorList";
 import { color, motion } from "framer-motion";
 function PermissionItem(props) {
   return (
-    <motion.div key={props.id} className="task" initial={{ y: -40, opacity: 0 }} animate={{ y: 0, opacity: 1, transition: { duration: 0.12 * props.index } }} whileHover={{ x: -5 }}>
+    <motion.div key={props.id} className="task" initial={{ y: -40, opacity: 0 }} animate={{ y: 0, opacity: 1, transition: { duration: 0.32 * props.index } }} whileHover={{ x: -5 }}>
       <input
         className="task-item"
         type="checkbox"

@@ -72,7 +72,7 @@ const Calendar = (props) => {
   //   };
 
   //   setDuringAdd(true);
-  //   const response = await fetch("http://localhost:3001/doctor/update", infoRequestOptions);
+  //   const response = await fetch(`${process.env.REACT_APP_URL_STRING}/doctor/update`, infoRequestOptions);
 
   //   const data = await response.json();
 

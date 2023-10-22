@@ -34,14 +34,20 @@ function ReceiptItem(props) {
           </button>
           <div className="product-cell category">
             <span className="cell-label">رقم الدفعة:</span>
+            {/* {props.payment.receiptNumber} */}
+            دفتر 2
+          </div>
+          <div className="product-cell category">
+            <span className="cell-label">رقم الدفعة:</span>
             {props.payment.receiptNumber}
           </div>
           <div className="product-cell image">
             {/* <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80" alt="product" /> */}
             <span>
-              {props.courses[props.branch][props.payment.courseId].teachers.map((teacher) => {
+              {/* {props.courses[props.branch][props.payment.courseId].teachers.map((teacher) => {
                 if (teacher.id == props.payment.teacherId) return teacher.nameAr;
-              })}
+              })} */}
+              خالد المصري
             </span>
           </div>
           <div className="product-cell category">
@@ -50,16 +56,17 @@ function ReceiptItem(props) {
           </div>
           <div className="product-cell status-cell">
             <span className="cell-label">المبلغ المدفوع:</span>
-            <span className="status">{props.payment.cost}</span>
+            <span className="status">11000</span>
           </div>
           <div className="product-cell sales">
             <span className="cell-label">حصة المدرس:</span>
-            {props.courses[props.branch][props.payment.courseId].teachers.map((teacher) => {
+            {/* {props.courses[props.branch][props.payment.courseId].teachers.map((teacher) => {
               if (teacher.id == props.payment.teacherId) return teacher.ratio;
-            })}
+            })} */}
+            10%
           </div>
           <div className="product-cell stock">
-            <span className="cell-label">المبلغ المتبقي له:</span> <span className="status active">{props.payment.remaining}</span>{" "}
+            <span className="cell-label">المبلغ المتبقي له:</span> <span className="status active">{props.payment.remaining ? props.payment.remaining : 9000}</span>{" "}
           </div>
           <div className="product-cell price">
             <span className="cell-label">التاريخ:</span>

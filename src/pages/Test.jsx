@@ -1077,48 +1077,52 @@ import { useEffect, useRef, useState } from "react";
 
 // export default Test
 
-import { initializeApp } from "firebase/app";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
+// import { initializeApp } from "firebase/app";
+// import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
-const Test = () => {
-  async function getDeviceToken() {
-    // Import the Firebase SDK and initialize the Firebase app
+// const Test = () => {
+//   async function getDeviceToken() {
+// Import the Firebase SDK and initialize the Firebase app
 
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyAUFKXQq0CU5ssPR9fvj4LKXadyZChcYTU",
-      authDomain: "rtcproject-9dbb4.firebaseapp.com",
-      projectId: "rtcproject-9dbb4",
-      storageBucket: "rtcproject-9dbb4.appspot.com",
-      messagingSenderId: "602014525356",
-      appId: "1:602014525356:web:5293b0859e32359e9a3c09",
-      measurementId: "G-LQN95X0WCR",
-    };
+//     const firebaseConfig = {
+//       apiKey: "AIzaSyAUFKXQq0CU5ssPR9fvj4LKXadyZChcYTU",
+//       authDomain: "rtcproject-9dbb4.firebaseapp.com",
+//       projectId: "rtcproject-9dbb4",
+//       storageBucket: "rtcproject-9dbb4.appspot.com",
+//       messagingSenderId: "602014525356",
+//       appId: "1:602014525356:web:5293b0859e32359e9a3c09",
+//       measurementId: "G-LQN95X0WCR",
+//     };
 
-    const app = initializeApp(firebaseConfig);
+//     const app = initializeApp(firebaseConfig);
 
-    const messaging = getMessaging(app);
-    getToken(messaging, { vapidKey: "BAJJW5rchwP76J5NHq9jei1qNhAwLryOHV5UPeRe6r20rkHoSEr-3Fulv9h0E_JKOUoX-vEEf8Q6aqj-MKR1Er8" })
-      .then((token) => {
-        console.log("Device token:", token);
-        onMessage(messaging, (payload) => {
-          console.log("payload", payload);
-        });
-      })
-      .catch((error) => {
-        console.log("Error obtaining device token:", error);
-      });
-  }
+//     const messaging = getMessaging(app);
+//     getToken(messaging, { vapidKey: "BAJJW5rchwP76J5NHq9jei1qNhAwLryOHV5UPeRe6r20rkHoSEr-3Fulv9h0E_JKOUoX-vEEf8Q6aqj-MKR1Er8" })
+//       .then((token) => {
+//         console.log("Device token:", token);
+//         onMessage(messaging, (payload) => {
+//           console.log("payload", payload);
+//         });
+//       })
+//       .catch((error) => {
+//         console.log("Error obtaining device token:", error);
+//       });
+//   }
 
-  useEffect(() => {
-    getDeviceToken();
-  }, []);
-  return <div>done</div>;
-};
+//   useEffect(() => {
+//     getDeviceToken();
+//   }, []);
+//   return <div>done</div>;
+// };
+
+function Test(props) {
+  return <></>;
+}
 
 export default Test;

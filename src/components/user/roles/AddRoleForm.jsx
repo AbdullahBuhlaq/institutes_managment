@@ -38,7 +38,7 @@ function AddRoleForm(props) {
       }),
     };
     setDuringAdd(true);
-    const response = await fetch(`http://localhost:3001/${props.url}/create`, infoRequestOptions);
+    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/${props.url}/create`, infoRequestOptions);
     const data = await response.json();
     if (data.success) {
       selectOptions.roles.push({ name: newData.name, value: newData.name });

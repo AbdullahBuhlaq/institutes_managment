@@ -70,7 +70,7 @@ function AddReceiptForm(props) {
         }),
       };
       setDuringAdd(true);
-      const response = await fetch("http://localhost:3001/admin-training/teacher/receipts/add", infoRequestOptions);
+      const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/teacher/receipts/add`, infoRequestOptions);
       const data = await response.json();
       // const data = { success: true, data: 4 };
       if (data.success) {
