@@ -42,7 +42,7 @@ function RoleItem(props) {
       }),
     };
     setDuringAdd(true);
-    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/${props.url}/update/${id}`, infoRequestOptions);
+    const response = await fetch(`${import.meta.env.VITE_URL}/${props.url}/update/${id}`, infoRequestOptions);
     const data = await response.json();
     if (data.success) {
       props.setRoles({ ...props.roles, [id]: { id: id, ...newData } });

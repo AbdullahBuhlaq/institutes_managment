@@ -24,7 +24,7 @@ function StudentInCourseItem(props) {
   //         courseId: props.course.id,
   //       }),
   //     };
-  //     const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/discount/add-in-branch`, infoRequestOptions);
+  //     const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/discount/add-in-branch`, infoRequestOptions);
   //     const data = await response.json();
   //     // const data = { success: true, data: 4 };
   //     if (data.success) {

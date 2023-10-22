@@ -52,7 +52,7 @@ function DashHome(props) {
   }, [location]);
 
   async function getInstitutes() {
-    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-site/training-center/get-all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${import.meta.env.VITE_URL}/admin-site/training-center/get-all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
       let finalInstitutes = {};
@@ -78,7 +78,7 @@ function DashHome(props) {
   }
 
   async function getEmployees() {
-    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-site/emp/all/`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${import.meta.env.VITE_URL}/admin-site/emp/all/`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
       let finalEmployees = {};
@@ -97,7 +97,7 @@ function DashHome(props) {
   }
 
   async function getRoles() {
-    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-site/roles/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    const response = await fetch(`${import.meta.env.VITE_URL}/admin-site/roles/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
       let finalRoles = {};
@@ -131,7 +131,7 @@ function DashHome(props) {
   }, []);
 
   async function logout() {
-    let response = await fetch(`${process.env.REACT_APP_URL_STRING}/auth/logout`, { ...requestOptions, method: "put", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
+    let response = await fetch(`${import.meta.env.VITE_URL}/auth/logout`, { ...requestOptions, method: "put", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
     let data = await response.json();
     // let data = { success: true };
     if (data.success) {

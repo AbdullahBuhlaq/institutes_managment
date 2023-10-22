@@ -44,7 +44,7 @@ function AddNotebook(props) {
         }),
       };
       setDuringAdd(true);
-      const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/notebook/add`, infoRequestOptions);
+      const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/notebook/add`, infoRequestOptions);
       const data = await response.json();
       // const data = { success: true, data: 4 };
       if (data.success) {

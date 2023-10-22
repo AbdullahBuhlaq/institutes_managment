@@ -53,7 +53,7 @@ function MainInstitute(props) {
   }, [props.search, props.institute, props.openBranch]);
 
   async function deleteBranch(id) {
-    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/branch/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
+    const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/branch/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
     const data = await response.json();
     // const data = { success: true };
     if (data.success) {

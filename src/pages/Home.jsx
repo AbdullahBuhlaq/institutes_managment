@@ -16,7 +16,7 @@ function Home(props) {
     if (!result?.token) navigate("/login");
     // if token exists
     else {
-      // const response = await fetch(`${process.env.REACT_APP_URL_STRING}/auth/isActive`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+      // const response = await fetch(`${import.meta.env.VITE_URL}/auth/isActive`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
       // const data = await response.json();
       const data = { success: true };
       // if token exists and active

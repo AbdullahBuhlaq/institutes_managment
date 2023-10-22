@@ -82,7 +82,7 @@ function AddInstituteForm(props) {
         ...newDirector,
       }),
     };
-    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-site/training-center/new-training`, infoRequestOptions);
+    const response = await fetch(`${import.meta.env.VITE_URL}/admin-site/training-center/new-training`, infoRequestOptions);
     const data = await response.json();
     if (data.success) {
       props.setInstitutes({ ...props.institutes, [data.data.center]: { ...newData, name: newData.nameCenter, id: data.data.center, user: { ...newDirector, id: data.data.user }, branches: { [data.data.branch]: { country: newData.nameCountry, countClass: newData.countClass, name: "فرع 1", id: data.data.branch } } } });

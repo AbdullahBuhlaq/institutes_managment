@@ -63,7 +63,7 @@ function AddBranchEmployeeForm(props) {
       }),
     };
     setDuringAdd(true);
-    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/emp/add`, infoRequestOptions);
+    const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/emp/add`, infoRequestOptions);
     const data = await response.json();
     // const data = { id: 4, success: true };
     if (data.success) {

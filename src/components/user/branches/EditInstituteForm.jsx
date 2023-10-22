@@ -197,7 +197,7 @@ function EditInstituteForm(props) {
   async function editInstitute(event) {
     const id = props.currentEdit.id;
     const newData = institute;
-    const url = props.type == "center" ? `${process.env.REACT_APP_URL_STRING}/admin-training/my-center/update` : `${process.env.REACT_APP_URL_STRING}/admin-training/my-center/update`;
+    const url = props.type == "center" ? `${import.meta.env.VITE_URL}/admin-training/my-center/update` : `${import.meta.env.VITE_URL}/admin-training/my-center/update`;
 
     setDuringAdd(true);
     let formData = new FormData();

@@ -42,7 +42,7 @@ function Discounts(props) {
   }, [props.search, props.discounts, cardsNumber]);
 
   async function deleteDiscount(id) {
-    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/discount/delete-in-branch/${id}`, { ...requestOptions, method: "delete", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
+    const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/discount/delete-in-branch/${id}`, { ...requestOptions, method: "delete", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
     const data = await response.json();
     // const data = { success: true };
     if (data.success) {

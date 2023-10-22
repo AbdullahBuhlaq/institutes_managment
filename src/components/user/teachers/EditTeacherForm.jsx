@@ -68,7 +68,7 @@ function AddTeacherForm(props) {
       }),
     };
     setDuringAdd(true);
-    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/teacher/update/${id}`, infoRequestOptions);
+    const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/teacher/update/${id}`, infoRequestOptions);
     const data = await response.json();
     // const data = { success: true };
     if (data.success) {

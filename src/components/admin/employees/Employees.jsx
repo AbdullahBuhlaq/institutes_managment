@@ -74,7 +74,7 @@ function Employees(props) {
   }, [props.search, props.employees]);
 
   async function deleteEmployee(id) {
-    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-site/emp/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
+    const response = await fetch(`${import.meta.env.VITE_URL}/admin-site/emp/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
     const data = await response.json();
     if (data.success) {
       delete props.employees[id];

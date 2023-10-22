@@ -70,7 +70,7 @@ function AddPaymentForm(props) {
         }),
       };
       setDuringAdd(true);
-      const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/student/receipts/add`, infoRequestOptions);
+      const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/student/receipts/add`, infoRequestOptions);
       const data = await response.json();
       // const data = { success: true, data: 4 };
       if (data.success) {

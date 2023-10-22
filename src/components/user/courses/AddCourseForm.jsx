@@ -255,7 +255,7 @@ function AddCourseForm(props) {
       }),
     };
     setDuringAdd(true);
-    const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/courses/add`, infoRequestOptions);
+    const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/courses/add`, infoRequestOptions);
     const data = await response.json();
     // const data = { id: 4, success: true };
     // const data = { success: true, data: 3, schedule: props.currentSchedule };

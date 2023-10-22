@@ -31,7 +31,7 @@ function AddBranchForm(props) {
       }),
     };
     setDuringAdd(true);
-    // const response = await fetch(`${process.env.REACT_APP_URL_STRING}/admin-training/branch/add`, infoRequestOptions);
+    // const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/branch/add`, infoRequestOptions);
     // const data = await response.json();
     const data = { success: true, id: 90 };
     if (data.success) {

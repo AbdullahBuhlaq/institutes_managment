@@ -33,7 +33,7 @@ function Login(props) {
     if (isValid) {
       setDuringLogin(true);
       let body = JSON.stringify({ ...user });
-      let response = await fetch(`${process.env.REACT_APP_URL_STRING}/auth/login`, { ...requestOptions, body: body });
+      let response = await fetch(`${import.meta.env.VITE_URL}/auth/login`, { ...requestOptions, body: body });
       let data = await response.json();
       if (data.success) {
         console.log(data);
