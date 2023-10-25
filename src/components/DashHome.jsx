@@ -18,6 +18,7 @@ import BranchesRight from "./admin/branches/BranchRight";
 import NoPage from "../pages/NoPage";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import selectOptions from "../constants/selectOptions";
+import jsonParse from "../functions/jsonParse";
 
 function DashHome(props) {
   const navigate = useNavigate();
@@ -104,7 +105,7 @@ function DashHome(props) {
       let rolesOption = [];
       await Promise.all(
         data.data.map(async (role) => {
-          let data = { id: role.id, name: role.name, ...JSON.parse(JSON.parse(role.data)) };
+          let data = { id: role.id, name: role.name, ...jsonParse(jsonParse(role.data)) };
           finalRoles[role.id] = data;
           rolesOption = [...rolesOption, { name: role.name, value: role.name }];
         })

@@ -15,6 +15,7 @@ import compare from "../../../functions/compare";
 import searchOptions from "../../../constants/searchOptions";
 import Calendar from "./Calendar";
 import checkPermissions from "../../../functions/checkPermissions";
+import jsonParse from "../../../functions/jsonParse";
 
 function AddCourseForm(props) {
   const [duringAdd, setDuringAdd] = useState(false);
@@ -260,7 +261,7 @@ function AddCourseForm(props) {
     // const data = { id: 4, success: true };
     // const data = { success: true, data: 3, schedule: props.currentSchedule };
     if (data.success) {
-      props.setInstitute({ ...props.institute, branches: { ...props.institute.branches, [props.openBranch]: { ...props.institute.branches[props.openBranch], schedule: { ...JSON.parse(data.data.schedule) } } } });
+      props.setInstitute({ ...props.institute, branches: { ...props.institute.branches, [props.openBranch]: { ...props.institute.branches[props.openBranch], schedule: { ...jsonParse(data.data.schedule) } } } });
       props.setCourses({ ...props.courses, [props.branch]: { ...props.courses[props.branch], [data.courseId]: { ...newStepOne, ...newStepTwo, ...newThirdStep, id: data.courseId } } });
       props.setDeleted([]);
       props.setAddNew(false);

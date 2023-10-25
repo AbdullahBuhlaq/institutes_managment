@@ -4,6 +4,7 @@ import userInformationFake from "../constants/userInformationFake";
 import DashHome from "../components/DashHome";
 import UserHome from "../components/UserHome";
 import "react-toastify/dist/ReactToastify.css";
+import jsonParse from "../functions/jsonParse";
 
 function Home(props) {
   const [userInformation, setUserInformation] = useState(userInformationFake);
@@ -11,7 +12,7 @@ function Home(props) {
   const navigate = useNavigate();
 
   async function getInformation() {
-    const result = JSON.parse(localStorage.getItem("user"));
+    const result = jsonParse(localStorage.getItem("user"));
     // if token doesn't exist
     if (!result?.token) navigate("/login");
     // if token exists

@@ -6,6 +6,7 @@ import handleSave from "../functions/handleSave";
 import requestOptions from "../constants/requestOptions";
 import messages from "../constants/messages";
 import NewInput from "../components/general/NewInput";
+import jsonParse from "../functions/jsonParse";
 
 function Login(props) {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ function Login(props) {
       let data = await response.json();
       if (data.success) {
         console.log(data);
-        localStorage.setItem("user", JSON.stringify({ permission: JSON.parse(data.data.permission).permission, show: JSON.parse(data.data.permission).show, token: data.data.token, role: data.data.name }));
+        localStorage.setItem("user", JSON.stringify({ permission: jsonParse(data.data.permission).permission, show: jsonParse(data.data.permission).show, token: data.data.token, role: data.data.name }));
         navigate("/home");
       } else {
         console.log(data.error);

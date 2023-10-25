@@ -29,6 +29,7 @@ import searchOptions from "../constants/searchOptions";
 import NotebookRight from "./user/notebooks/NotebookRight";
 import RoomRight from "./user/rooms/RoomRight";
 import checkShow from "../functions/checkShow";
+import jsonParse from "../functions/jsonParse";
 
 function UserHome(props) {
   const navigate = useNavigate();
@@ -158,7 +159,7 @@ function UserHome(props) {
       let rolesOption = [];
       await Promise.all(
         data.data.map(async (role) => {
-          let data = { id: role.id, name: role.name, ...JSON.parse(JSON.parse(role.data)) };
+          let data = { id: role.id, name: role.name, ...jsonParse(jsonParse(role.data)) };
           finalRoles[role.id] = data;
           rolesOption = [...rolesOption, { name: role.name, value: role.name }];
         })
@@ -189,9 +190,9 @@ function UserHome(props) {
       let branchesObject = [];
       await Promise.all(
         data.data.branches.map((branch) => {
-          // JSON.parse(branch.schedule)
+          // jsonParse(branch.schedule)
           // 1: { data: [] } }
-          temp[branch.id] = { ...branch, schedule: JSON.parse(branch.schedule) == {} ? { 1: { data: [] } } : JSON.parse(branch.schedule) };
+          temp[branch.id] = { ...branch, schedule: jsonParse(branch.schedule) == {} ? { 1: { data: [] } } : jsonParse(branch.schedule) };
           branchesObject = [...branchesObject, { name: branch.name, value: branch.name }];
         })
       );
