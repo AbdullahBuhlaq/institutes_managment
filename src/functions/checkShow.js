@@ -1,5 +1,5 @@
 function checkShow(userInformation, shows, brnachShows, branch) {
-  let showStatus = true;
+  let showStatus = false;
 
   shows.map((show) => {
     showStatus = showStatus || userInformation.show.includes(show);
