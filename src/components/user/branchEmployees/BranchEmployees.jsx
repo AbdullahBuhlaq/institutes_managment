@@ -72,7 +72,7 @@ function BranchEmployees(props) {
   }, [props.search, props.employees]);
 
   async function deleteEmployee(id) {
-    const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/emp/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
+    const response = await fetch(props.userInformation.branch ? `${import.meta.env.VITE_URL}/admin-training/emp/delete-in-branch/${id}` : `${import.meta.env.VITE_URL}/admin-training/emp/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
     const data = await response.json();
     if (data.success) {
       delete props.employees[props.branch][id];

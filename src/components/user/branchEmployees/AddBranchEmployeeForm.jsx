@@ -57,13 +57,17 @@ function AddBranchEmployeeForm(props) {
     const infoRequestOptions = {
       ...requestOptions,
       headers: { ...requestOptions.headers, authorization: props.userInformation.token },
-      body: JSON.stringify({
-        ...employee,
-        nameBranch: props.branchName,
-      }),
+      body: props.userInformation.branch
+        ? JSON.stringify({
+            ...employee,
+          })
+        : JSON.stringify({
+            ...employee,
+            nameBranch: props.branchName,
+          }),
     };
     setDuringAdd(true);
-    const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/emp/add`, infoRequestOptions);
+    const response = await fetch(props.userInformation.branch ? `${import.meta.env.VITE_URL}/admin-training/emp/add-in-branch` : `${import.meta.env.VITE_URL}/admin-training/emp/add`, infoRequestOptions);
     const data = await response.json();
     // const data = { id: 4, success: true };
     if (data.success) {

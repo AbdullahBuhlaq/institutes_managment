@@ -71,13 +71,17 @@ function EditBranchEmployeeForm(props) {
       ...requestOptions,
       headers: { ...requestOptions.headers, authorization: props.userInformation.token },
       method: "put",
-      body: JSON.stringify({
-        ...employee,
-        nameBranch: props.branchName,
-      }),
+      body: props.userInformation.branch
+        ? JSON.stringify({
+            ...employee,
+          })
+        : JSON.stringify({
+            ...employee,
+            nameBranch: props.branchName,
+          }),
     };
     setDuringAdd(true);
-    const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/emp/update/${id}`, infoRequestOptions);
+    const response = await fetch(props.userInformation.branch ? `${import.meta.env.VITE_URL}/admin-training/emp/update-in-branch/${id}` : `${import.meta.env.VITE_URL}/admin-training/emp/update/${id}`, infoRequestOptions);
     const data = await response.json();
     if (data.success) {
       const roleId = await Promise.all(

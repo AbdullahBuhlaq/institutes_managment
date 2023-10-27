@@ -183,8 +183,36 @@ function UserHome(props) {
   }, [okGetIns]);
 
   async function getInstitute() {
-    const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/my-center/info`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
-    const data = await response.json();
+    // const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/my-center/info`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
+    // const data = await response.json();
+    let data = {
+      success: true,
+      data: {
+        id: 1,
+        name: "lskdfjlkj",
+        picture: null,
+        fromHour: "3",
+        toHour: "6",
+        typeTraining: "مجاني",
+        countBranch: 5,
+        createdAt: "2023-10-27T12:42:35.000Z",
+        location: null,
+        branches: [
+          {
+            name: "فرع 1",
+            countClass: 5,
+            createdAt: "2023-10-27T12:42:36.000Z",
+            id: 1,
+          },
+          {
+            name: "فرع1",
+            countClass: 5,
+            createdAt: "2023-10-27T20:15:57.000Z",
+            id: 3,
+          },
+        ],
+      },
+    };
     if (data.success) {
       console.log("data isssss", data);
       let temp = {};
