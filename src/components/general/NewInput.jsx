@@ -1,5 +1,6 @@
 import { useState } from "react";
 import handleSave from "../../functions/handleSave";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 function NewInput(props) {
   const [isText, setIsText] = useState(false);
@@ -31,7 +32,7 @@ function NewInput(props) {
               setIsText(!isText);
             }}
           >
-            {isText ? <i className="fa-solid fa-eye-slash"></i> : <i className="fa-solid fa-eye"></i>}
+            {isText ? <FaEyeSlash /> : <FaEye />}
           </span>
         ) : null}
       </div>
