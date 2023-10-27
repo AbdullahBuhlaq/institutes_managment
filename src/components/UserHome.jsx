@@ -186,7 +186,7 @@ function UserHome(props) {
     const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/my-center/info`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
-      console.log('data isssss', data)
+      console.log("data isssss", data);
       let temp = {};
       let branchesObject = [];
       await Promise.all(
@@ -232,6 +232,7 @@ function UserHome(props) {
     const data = await response.json();
     // const data = { success: true, data: [...employeesFake] };
     if (data.success) {
+      console.log("employees:", data);
       let finalEmployees = {};
       await Promise.all(
         Object.keys(institute.branches).map(async (branch) => {
@@ -265,7 +266,8 @@ function UserHome(props) {
     const data = { success: true, data: [] };
 
     if (data.success) {
-      console.log("ro", data);
+      console.log("rooms:", data);
+
       let finalRooms = {};
       await Promise.all(
         Object.keys(institute.branches).map(async (branch) => {
@@ -287,12 +289,14 @@ function UserHome(props) {
       });
     }
   }
+
   async function getNotebooks() {
     const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/notebook/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
 
     if (data.success) {
-      console.log("noo", data);
+      console.log("books:", data);
+
       let finalNotebooks = {};
       let tempNotebooks = {};
       await Promise.all(
@@ -336,6 +340,8 @@ function UserHome(props) {
     const data = await response.json();
 
     if (data.success) {
+      console.log("subjects:", data);
+
       let finalSubjects = {};
       let tempSubj = {};
       await Promise.all(
@@ -378,8 +384,8 @@ function UserHome(props) {
     const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/courses/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
-      let finalCourses = {};
       console.log("courses", data);
+      let finalCourses = {};
       let coursesSelect = [];
       await Promise.all(
         data.data.map(async (course) => {
@@ -418,10 +424,13 @@ function UserHome(props) {
       });
     }
   }
+
   async function getStudents() {
     const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/student/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
+      console.log("students:", data);
+
       let finalStudents = {};
       await Promise.all(
         Object.keys(institute.branches).map(async (branch) => {
@@ -453,7 +462,7 @@ function UserHome(props) {
     const data = await response.json();
 
     if (data.success) {
-      console.log(data);
+      console.log("discounts:", data);
       let finalDiscounts = {};
       let tempSubj = {};
       await Promise.all(
@@ -492,7 +501,7 @@ function UserHome(props) {
   async function getReceipts() {
     const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/teacher/receipts/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
-    console.log("rece", data);
+    console.log("receipts:", data);
     if (data.success) {
       let finalReceipts = {};
 
@@ -510,10 +519,11 @@ function UserHome(props) {
       });
     }
   }
+
   async function getPayments() {
     const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/student/receipts/all`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
-    console.log("rece", data);
+    console.log("payments:", data);
     if (data.success) {
       let finalPayments = {};
       console.log("pay", data);
