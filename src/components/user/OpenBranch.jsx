@@ -95,7 +95,7 @@ function OpenBranch(props) {
       <div className="body">
         <Routes>
           {true && <Route index exact element={<BranchStatistics />} />}
-          {true && <Route path="/statistics" exact element={<BranchStatistics />} />}
+          {true && <Route path="/branchStatistics" exact element={<BranchStatistics />} />}
           {checkShow(props.userInformation, ["employees"], ["employeesInBranch"], props.openBranch) && (
             <Route
               path="/employees"

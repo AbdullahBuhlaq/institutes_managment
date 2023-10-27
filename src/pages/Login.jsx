@@ -38,7 +38,7 @@ function Login(props) {
       let data = await response.json();
       if (data.success) {
         console.log(data);
-        localStorage.setItem("user", JSON.stringify({ permission: jsonParse(data.data.permission).permission, show: jsonParse(data.data.permission).show, token: data.data.token, role: data.data.name }));
+        localStorage.setItem("user", JSON.stringify({ permission: jsonParse(data.data.permission).permission, show: jsonParse(data.data.permission).show, token: data.data.token, role: data.data.name, branch: data.data.branch }));
         navigate("/home");
       } else {
         console.log(data.error);
