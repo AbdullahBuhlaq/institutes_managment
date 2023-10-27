@@ -72,7 +72,8 @@ function AppLeft(props) {
           </svg>
         </button>
         {props.tabs.map((tab, tabIndex) => {
-          if (props.userInformation.show.includes(tab.show) || tab.show == "branches" || tab.show == "statistics") {
+          // if (props.userInformation.show.includes(tab.show) || tab.show == "branches" || tab.show == "statistics") {
+          if (true) {
             return <Tab hover={hover || screen} key={tabIndex} tabIndex={tabIndex} tab={tab} setCurrent={props.setCurrent} current={props.current} />;
           }
         })}

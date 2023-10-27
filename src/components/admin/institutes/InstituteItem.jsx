@@ -34,7 +34,8 @@ function InstituteItem(props) {
             ></i>
             {ShowSetting ? (
               <motion.ul key={props.institute.id} className={"menu"} initial={{ scale: 0 }} animate={{ scale: 1, transition: { duration: 0.1 } }} exit={{ scale: 0 }}>
-                {props.userInformation.show.includes("institutes") ? (
+                {/* {props.userInformation.show.includes("institutes") ? ( */}
+                {true ? (
                   <li
                     onClick={() => {
                       props.setCurrentBranches(props.institute.id);

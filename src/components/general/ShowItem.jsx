@@ -2,7 +2,7 @@ import handleSave from "../../functions/handleSave";
 import { motion } from "framer-motion";
 function ShowItem(props) {
   return (
-    <motion.div key={props.id} className="task" initial={{ y: -40, opacity: 0 }} animate={{ y: 0, opacity: 1, transition: { duration: 0.24 * (props.index + 1) } }} whileHover={{ x: -5 }}>
+    <motion.div key={props.id} className="task" whileHover={{ x: -5 }}>
       <input
         className="task-item"
         type="checkbox"
