@@ -299,12 +299,15 @@ function UserHome(props) {
 
       let finalNotebooks = {};
       let tempNotebooks = {};
+      console.log("1");
       await Promise.all(
         Object.keys(institute.branches).map(async (branch) => {
           finalNotebooks[branch] = {};
           tempNotebooks[branch] = [];
         })
       );
+      console.log("2");
+
       let allNotebooks = [];
       let allNotebooksId = [];
       await Promise.all(
@@ -315,6 +318,8 @@ function UserHome(props) {
           allNotebooksId = [...allNotebooksId, { name: notebook.name, value: notebook.id, id: notebook.id }];
         })
       );
+      console.log("3");
+
       allNotebooks = Array.from(new Set(allNotebooks));
       let finalAllNotebooks = [];
       await Promise.all(
@@ -322,10 +327,18 @@ function UserHome(props) {
           finalAllNotebooks = [...finalAllNotebooks, { name: index, value: index }];
         })
       );
+      console.log("4");
+
       selectOptions.allNotebooks = finalAllNotebooks;
       selectOptions.notebooksObject = tempNotebooks;
+      console.log("5");
+
       selectOptions.notebookId = allNotebooksId;
+      console.log("6");
+
       selectOptions.notebooks = finalAllNotebooks;
+      console.log("7");
+
       setNotebooks({ ...finalNotebooks });
     } else {
       console.log(data.error);
