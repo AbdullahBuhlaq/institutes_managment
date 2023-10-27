@@ -186,6 +186,7 @@ function UserHome(props) {
     const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/my-center/info`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "GET" });
     const data = await response.json();
     if (data.success) {
+      console.log('data isssss', data)
       let temp = {};
       let branchesObject = [];
       await Promise.all(
