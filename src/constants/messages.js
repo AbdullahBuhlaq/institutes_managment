@@ -21,7 +21,7 @@ const messages = {
   "string.length": "{{#label}} طول النص يجب أن يكون  {{#limit}} محرفا",
   "string.lowercase": "{{#label}} must only contain lowercase characters",
   "string.max": "{{#label}} طول النص يجب أن يكون على الأكثر {{#limit}} محرفا",
-  "number.max": "{{#label}} يجب أن يكون على الأكثر {{#limit}} محرفا",
+  "number.max": "{{#label}} يجب أن يكون على الأكثر {{#limit}}",
   "string.min": "{{#label}} طول النص يجب أن يكون على الأقل {{#limit}} محرفا",
   "number.min": "{{#label}} يجب أن يكون على الأقل {{#limit}}",
   "array.min": "{{#label}} يجب أن يتضمن على الأقل {{#limit}} عنصرا",
