@@ -29,8 +29,8 @@ function AddInstituteForm(props) {
     nameCountry: Joi.string().required().min(2).max(50).trim().messages(messages).label("اسم المدينة"),
     nameCenter: Joi.string().required().min(2).max(150).trim().messages(messages).label("اسم المركز"),
     countClass: Joi.number().required().min(1).messages(messages).label("عدد القاعات"),
-    fromHour: Joi.number().required().min(0).max(23).messages(messages).label("ساعة الافتتاح"),
-    toHour: Joi.number().required().min(0).max(23).greater(Joi.ref("fromHour")).messages(messages).label("ساعة الإغلاق"),
+    fromHour: Joi.string().required().messages(messages).label("ساعة الافتتاح"),
+    toHour: Joi.string().required().messages(messages).label("ساعة الإغلاق"),
   };
   const joiInstitute = Joi.object(instituteSchema);
 
@@ -186,8 +186,8 @@ function AddInstituteForm(props) {
               <NewInput placeholder={""} label={"عدد القاعات"} type={"number"} name={"countClass"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
               <NewInput placeholder={""} label={"ساعة الافتتاح"} type={"number"} name={"fromHour"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
 
-              <NewInput placeholder={""} label={"ساعة الإغلاق"} type={"number"} name={"toHour"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
-              <NewInput placeholder={""} label={"عدد الأفرع"} type={"number"} name={"countBranch"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
+              <NewInput placeholder={""} label={"ساعة الإغلاق"} type={"time"} name={"toHour"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
+              <NewInput placeholder={""} label={"عدد الأفرع"} type={"time"} name={"countBranch"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
               <SelectInput label={"المدينة :"} placeholder={"اختر المدينة..."} list={selectOptions.country} name={"nameCountry"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
             </div>
 

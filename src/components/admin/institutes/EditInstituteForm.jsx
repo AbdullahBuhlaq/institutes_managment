@@ -188,9 +188,9 @@ function EditInstituteForm(props) {
     // countBranch: Joi.number().allow(null).messages(messages).label("عدد الأفرع"),
     // nameCountry: Joi.string().required().min(2).max(50).trim().messages(messages).label("اسم المدينة"),
     nameCenter: Joi.string().required().min(2).max(150).trim().messages(messages).label("اسم المركز"),
-    fromHour: Joi.number().required().min(0).max(23).messages(messages).label("ساعة الافتتاح"),
+    fromHour: Joi.string().required().messages(messages).label("ساعة الافتتاح"),
+    toHour: Joi.string().required().messages(messages).label("ساعة الإغلاق"),
     // countClass: Joi.number().required().min(1).messages(messages).label("عدد القاعات"),
-    toHour: Joi.number().required().min(0).max(23).greater(Joi.ref("fromHour")).messages(messages).label("ساعة الإغلاق"),
   };
   const joiInstitute = Joi.object(instituteSchema);
 
@@ -271,8 +271,8 @@ function EditInstituteForm(props) {
         </> */}
           {/* <Input label={"عدد القاعات"} type={"number"} name={"countClass"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} /> */}
 
-          <NewInput placeholder={""} label={"ساعة الافتتاح"} type={"number"} name={"fromHour"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
-          <NewInput placeholder={""} label={"ساعة الإغلاق"} type={"number"} name={"toHour"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
+          <NewInput placeholder={""} label={"ساعة الافتتاح"} type={"time"} name={"fromHour"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
+          <NewInput placeholder={""} label={"ساعة الإغلاق"} type={"time"} name={"toHour"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
           {/* <Input label={"عدد الأفرع"} type={"number"} name={"countBranch"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} /> */}
 
           {/* <select
