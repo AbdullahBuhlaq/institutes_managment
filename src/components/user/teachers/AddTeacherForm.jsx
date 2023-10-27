@@ -80,6 +80,7 @@ function AddTeacherForm(props) {
       }),
     };
     setDuringAdd(true);
+    console.log(teacher)
     const response = await fetch(props.userInformation.branch ? `${import.meta.env.VITE_URL}/admin-training/teacher/add-in-branch` : `${import.meta.env.VITE_URL}/admin-training/teacher/add`, infoRequestOptions);
     const data = await response.json();
     // const data = { success: true, data: 3 };
