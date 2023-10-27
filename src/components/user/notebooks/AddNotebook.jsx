@@ -38,13 +38,17 @@ function AddNotebook(props) {
       const infoRequestOptions = {
         ...requestOptions,
         headers: { ...requestOptions.headers, authorization: props.userInformation.token },
-        body: JSON.stringify({
-          ...notebook,
-          nameBranch: props.branchName,
-        }),
+        body: props.userInformation.branch
+          ? JSON.stringify({
+              ...notebook,
+            })
+          : JSON.stringify({
+              ...notebook,
+              nameBranch: props.branchName,
+            }),
       };
       setDuringAdd(true);
-      const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/notebook/add`, infoRequestOptions);
+      const response = await fetch(props.userInformation.branch ? `${import.meta.env.VITE_URL}/admin-training/notebook/new` : `${import.meta.env.VITE_URL}/admin-training/notebook/add`, infoRequestOptions);
       const data = await response.json();
       // const data = { success: true, data: 4 };
       if (data.success) {

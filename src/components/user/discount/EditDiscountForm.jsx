@@ -35,12 +35,17 @@ function EditDiscountForm(props) {
         ...requestOptions,
         method: "put",
         headers: { ...requestOptions.headers, authorization: props.userInformation.token },
-        body: JSON.stringify({
-          ...discount,
-        }),
+        body: props.userInformation.branch
+          ? JSON.stringify({
+              ...discount,
+            })
+          : JSON.stringify({
+              ...discount,
+              nameBranch: props.branchName,
+            }),
       };
       setDuringAdd(true);
-      const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/discount/update-in-branch/${id}`, infoRequestOptions);
+      const response = await fetch(props.userInformation.branch ? `${import.meta.env.VITE_URL}/admin-training/discount/update-in-branch/${id}` : `${import.meta.env.VITE_URL}/admin-training/discount/update/${id}`, infoRequestOptions);
       const data = await response.json();
       // const data = { success: true };
       if (data.success) {

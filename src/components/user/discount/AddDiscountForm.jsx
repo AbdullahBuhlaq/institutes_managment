@@ -28,12 +28,17 @@ function AddDiscountForm(props) {
       const infoRequestOptions = {
         ...requestOptions,
         headers: { ...requestOptions.headers, authorization: props.userInformation.token },
-        body: JSON.stringify({
-          ...discount,
-        }),
+        body: props.userInformation.branch
+          ? JSON.stringify({
+              ...discount,
+            })
+          : JSON.stringify({
+              ...discount,
+              nameBranch: props.branchName,
+            }),
       };
       setDuringAdd(true);
-      const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/discount/add-in-branch`, infoRequestOptions);
+      const response = await fetch(props.userInformation.branch ? `${import.meta.env.VITE_URL}/admin-training/discount/add-in-branch` : `${import.meta.env.VITE_URL}/admin-training/discount/add`, infoRequestOptions);
       const data = await response.json();
       // const data = { success: true, data: 4 };
       if (data.success) {

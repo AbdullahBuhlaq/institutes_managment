@@ -31,7 +31,7 @@ function Teachers(props) {
   }, [props.search, props.teachers]);
 
   async function deleteTeacher(id) {
-    const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/teacher/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
+    const response = await fetch(props.userInformation.branch ? `${import.meta.env.VITE_URL}/admin-training/teacher/delete-in-branch/${id}` : `${import.meta.env.VITE_URL}/admin-training/teacher/delete/${id}`, { ...requestOptions, headers: { ...requestOptions.headers, authorization: props.userInformation.token }, method: "delete" });
     const data = await response.json();
     // const data = { success: true };
     if (data.success) {

@@ -55,13 +55,17 @@ function EditStudentForm(props) {
         ...requestOptions,
         method: "put",
         headers: { ...requestOptions.headers, authorization: props.userInformation.token },
-        body: JSON.stringify({
-          ...student,
-          nameBranch: props.branchName,
-        }),
+        body: props.userInformation.branch
+          ? JSON.stringify({
+              ...student,
+            })
+          : JSON.stringify({
+              ...student,
+              nameBranch: props.branchName,
+            }),
       };
       setDuringAdd(true);
-      const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/student/update/${id}`, infoRequestOptions);
+      const response = await fetch(props.userInformation.branch ? `${import.meta.env.VITE_URL}/admin-training/student/update-in-branch/${id}` : `${import.meta.env.VITE_URL}/admin-training/student/update/${id}`, infoRequestOptions);
       const data = await response.json();
       // const data = { success: true };
       if (data.success) {
