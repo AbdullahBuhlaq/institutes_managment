@@ -80,6 +80,7 @@ function Courses(props) {
     useEffect(() => {
       let index = 1;
       const populateArray = async () => {
+        console.log(props.courses, props.branch);
         const newArr = await Promise.all(
           Object.keys(props.courses[props.branch]).map(async (course, courseIndex) => {
             // const isTrue = await compare(searchOptions["courses"][props.search.field], props.search.operator, props.courses[props.branch][course][props.search.field], props.search.word);
@@ -115,7 +116,7 @@ function Courses(props) {
         setFirstRender(false);
       };
 
-      populateArray();
+      if (props.courses) populateArray();
     }, [props.search, props.courses]);
 
     async function deleteCourse(id) {
@@ -274,7 +275,7 @@ function Courses(props) {
               {addTeacherForm && <AddTeacherForm toast={props.toast} teachers={props.teachers} setTeachers={props.setTeachers} setAddNew={setAddTeacherForm} userInformation={props.userInformation} />}
             </div>
           </div>
-          <div className={"popup-box" + (currentClassSession ? " show" : "")}>
+          {/* <div className={"popup-box" + (currentClassSession ? " show" : "")}>
             <div className="new-form-container" style={{ width: "65%", height: "88%", padding: "2%" }}>
               <button className="close-form">
                 <i
@@ -447,7 +448,7 @@ function Courses(props) {
                 )}
               </>
             </div>
-          </div>
+          </div> */}
           <div className={"popup-box" + (currentCourseStudents ? " show" : "")}>
             <div className="new-form-container" style={{ width: "65%", height: "88%", padding: "2%" }}>
               <button className="close-form">
