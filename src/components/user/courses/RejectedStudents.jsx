@@ -209,7 +209,7 @@ function RejectedStudents(props) {
       setCanceled(false);
     };
 
-    populateArray();
+    if (currentStudents) populateArray();
   }, [currentStudents, cardsNumber, studentsToEdit]);
 
   return (
