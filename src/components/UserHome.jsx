@@ -433,20 +433,20 @@ function UserHome(props) {
       let finalCourses = {};
       let coursesSelect = [];
 
-      await Promise.all(
-        Object.keys(institute.branches).map(async (branch) => {
-          finalCourses[branch] = {};
-          coursesSelect[branch] = [];
-        })
-      );
+      // await Promise.all(
+      //   Object.keys(institute.branches).map(async (branch) => {
+      //     finalCourses[branch] = {};
+      //     coursesSelect = [];
+      //   })
+      // );
       await Promise.all(
         data.data.map(async (course) => {
-          finalCourses[course.branch][course.id] = { ...course, subjectId: course["subject.id"], subjectType: course["subject.subjectType"] };
+          finalCourses[course.id] = { ...course, subjectId: course["subject.id"], subjectType: course["subject.subjectType"] };
           coursesSelect = [...coursesSelect, { name: course.courseName, value: course.id, id: course.id }];
         })
       );
       selectOptions.courses = coursesSelect;
-      setCourses({ ...finalCourses });
+      setCourses({ 4: { ...finalCourses } });
       console.log("finalcourses", finalCourses);
     } else {
       console.log(data.error);
