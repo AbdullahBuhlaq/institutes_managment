@@ -78,6 +78,7 @@ function PendingStudents(props) {
     if (isValid) {
       const id = props.course.id;
       const newData = studentsToEdit;
+      console.log(newData);
       const infoRequestOptions = {
         ...requestOptions,
         method: "PUT",
