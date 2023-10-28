@@ -17,6 +17,7 @@ function ClassInCourseForm(props) {
           className="project-box"
           onClick={() => {
             props.setCurrentClass(props.index + 1);
+            props.setCurrentClassSession(props.index + 1);
           }}
           style={{ cursor: "pointer" }}
         >
