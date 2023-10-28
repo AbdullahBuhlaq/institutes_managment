@@ -55,7 +55,7 @@ function Payments(props) {
       setFirstRender(false);
     };
 
-    populateArray();
+    if (props.payments) populateArray();
   }, [props.search, props.payments, cardsNumber]);
 
   async function deletePayment(id) {

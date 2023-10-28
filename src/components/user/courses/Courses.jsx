@@ -83,8 +83,8 @@ function Courses(props) {
         console.log(props.courses, props.branch);
         const newArr = await Promise.all(
           Object.keys(props.courses[props.branch]).map(async (course, courseIndex) => {
-            // const isTrue = await compare(searchOptions["courses"][props.search.field], props.search.operator, props.courses[props.branch][course][props.search.field], props.search.word);
-            const isTrue = true;
+            const isTrue = await compare(searchOptions["courses"][props.search.field], props.search.operator, props.courses[props.branch][course][props.search.field], props.search.word);
+            // const isTrue = true;
             if (isTrue) {
               index += 1;
               let curIndex = index;

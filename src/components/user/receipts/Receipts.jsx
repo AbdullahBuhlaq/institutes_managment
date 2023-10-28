@@ -59,7 +59,7 @@ function Receipts(props) {
   }, [props.search, props.receipts, cardsNumber]);
 
   async function deleteReceipt(id) {
-    const response = await fetch(`${import.meta.env.VITE_URL}/admin-training//teacher/receipts/delete/${id}`, { ...requestOptions, method: "delete", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
+    const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/teacher/receipts/delete/${id}`, { ...requestOptions, method: "delete", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
     const data = await response.json();
     // const data = { success: true };
     if (data.success) {
