@@ -222,7 +222,8 @@ function UserHome(props) {
         data.data.branches.map((branch) => {
           // jsonParse(branch.schedule)
           // 1: { data: [] } }
-          temp[branch.id] = { ...branch, schedule: jsonParse(branch.schedule) == {} ? { 1: { data: [] } } : jsonParse(branch.schedule) };
+          console.log(jsonParse(branch.schedule));
+          temp[branch.id] = { ...branch, schedule: jsonParse(branch.schedule) == [] || !jsonParse(branch.schedule) ? { 1: { data: [] } } : jsonParse(branch.schedule) };
           branchesObject = [...branchesObject, { name: branch.name, value: branch.name }];
         })
       );
