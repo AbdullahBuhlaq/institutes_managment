@@ -111,7 +111,7 @@ const Calendar = (props) => {
   };
 
   useEffect(() => {
-    console.log(props.currentSchedule[props.currentClassSession], props.currentClassSession);
+    if (!props.currentSchedule[props.currentClassSession]) props.setCurrentSchedule({ ...props.currentSchedule, [props.currentClassSession]: { data: [] } });
   }, []);
 
   try {
@@ -144,7 +144,7 @@ const Calendar = (props) => {
               dayMaxEvents={true}
               weekends={true}
               nowIndicator={true}
-              initialEvents={props.currentSchedule[props.currentClassSession].data}
+              initialEvents={props.currentSchedule[props.currentClassSession] ? props.currentSchedule[props.currentClassSession].data : []}
               eventsSet={handleEvents}
               select={handleDateSelect}
               eventClick={handleEventClick}
