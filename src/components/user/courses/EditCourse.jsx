@@ -239,6 +239,7 @@ function EditCourse(props) {
     const newStepOne = firstStep;
     const newStepTwo = secondStep;
     const newThirdStep = thirdStep;
+    console.log(newStepOne, newStepTwo, newThirdStep);
     const deleted = props.deleted;
     const id = props.currentEdit.id;
     const infoRequestOptions = {
