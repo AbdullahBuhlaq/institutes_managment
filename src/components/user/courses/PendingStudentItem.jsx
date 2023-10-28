@@ -44,7 +44,7 @@ function PendingStudentItem(props) {
                 style={{ padding: "2px" }}
                 value={props.discountId}
               >
-                <option value={0}>لا يوجد</option>
+                <option value={-1}>لا يوجد</option>
                 {Object.keys(props.discounts[props.branch]).map((item, itemIndex) => {
                   return (
                     <option key={itemIndex} value={props.discounts[props.branch][item].id}>
