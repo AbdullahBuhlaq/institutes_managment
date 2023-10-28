@@ -146,6 +146,7 @@ function Courses(props) {
       // if (!props.institute.branches[props.openBranch]?.schedule[currentClassSession] && currentClassSession) {
       //   props.setInstitute({ ...props.institute, branches: { ...props.institute.branches, [props.openBranch]: { ...props.institute[props.openBranch], schedule: { ...props.institute[props.openBranch]?.schedule, [currentClassSession]: { data: [] } } } } });
       // }
+      console.log(props.institute.branches[props.openBranch]);
       setCurrentSchedule(_.cloneDeep(props.institute.branches[props.openBranch]?.schedule));
     }, [addNew, currentEdit, props.institute, currentClassSession]);
 

@@ -112,7 +112,7 @@ const Calendar = (props) => {
   };
 
   useEffect(() => {
-    console.log(props.currentClassSession);
+    console.log(props.currentSchedule);
     if (!props.currentSchedule[props.currentClassSession]) props.setCurrentSchedule({ ...props.currentSchedule, [props.currentClassSession]: { data: [] } });
   }, []);
 
