@@ -120,7 +120,7 @@ function Courses(props) {
     }, [props.search, props.courses]);
 
     async function deleteCourse(id) {
-      const response = await fetch(`http://localhost:3001/admin-training/courses/delete/${id}`, { ...requestOptions, method: "delete", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
+      const response = await fetch(`${import.meta.env.VITE_URL}/admin-training/courses/delete/${id}`, { ...requestOptions, method: "delete", headers: { ...requestOptions.headers, authorization: props.userInformation.token } });
       const data = await response.json();
       // const data = { success: true };
       if (data.success) {
