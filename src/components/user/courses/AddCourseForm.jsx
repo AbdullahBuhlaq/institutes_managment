@@ -243,6 +243,7 @@ function AddCourseForm(props) {
     const newStepTwo = secondStep;
     const newThirdStep = thirdStep;
     console.log(newStepOne, newStepTwo, newThirdStep);
+    console.log(props.currentSchedule);
     const deleted = props.deleted;
     const infoRequestOptions = {
       ...requestOptions,
