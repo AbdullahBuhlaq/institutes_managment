@@ -174,6 +174,7 @@ function RejectedStudents(props) {
   useEffect(() => {
     let index = 1;
     const populateArray = async () => {
+      console.log(props.course);
       const newArr = await Promise.all(
         currentStudents.map(async (pendingStudent, pendingStudentIndex) => {
           //   const isTrue = await compare(searchOptions["pendingStudents"][props.search.field], props.search.operator, props.pendingStudents[props.branch][pendingStudent][props.search.field], props.search.word);
