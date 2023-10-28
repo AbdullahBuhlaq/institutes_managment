@@ -184,10 +184,10 @@ function AddInstituteForm(props) {
               <NewInput placeholder={""} label={"اسم المركز"} type={"text"} name={"nameCenter"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
               <SelectInput label={"نوع المركز :"} placeholder={"اختر نوع المركز..."} list={selectOptions.typeTraining} name={"typeTraining"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
               <NewInput placeholder={""} label={"عدد القاعات"} type={"number"} name={"countClass"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
-              <NewInput placeholder={""} label={"ساعة الافتتاح"} type={"number"} name={"fromHour"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
+              <NewInput placeholder={""} label={"ساعة الافتتاح"} type={"time"} name={"fromHour"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
 
               <NewInput placeholder={""} label={"ساعة الإغلاق"} type={"time"} name={"toHour"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
-              <NewInput placeholder={""} label={"عدد الأفرع"} type={"time"} name={"countBranch"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
+              <NewInput placeholder={""} label={"عدد الأفرع"} type={"number"} name={"countBranch"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
               <SelectInput label={"المدينة :"} placeholder={"اختر المدينة..."} list={selectOptions.country} name={"nameCountry"} onChange={handleSave} state={institute} setState={setInstitute} errors={instituteErrors} setErrors={setInstituteErrors} schema={instituteSchema} />
             </div>
 
