@@ -169,6 +169,7 @@ function UserHome(props) {
       setOkGetIns(true);
     } else {
       console.log(data.error);
+      if (data.error == "jwt expired") navigate("/login");
       props.toast.error("عذرا, حدث خطأ في السيرفر", {
         position: props.toast.POSITION.TOP_CENTER,
       });
@@ -230,6 +231,7 @@ function UserHome(props) {
       setOkGetEmployees(true);
     } else {
       console.log(data.error);
+      if (data.error == "jwt expired") navigate("/login");
       props.toast.error("عذرا, حدث خطأ في السيرفر", {
         position: props.toast.POSITION.TOP_CENTER,
       });
