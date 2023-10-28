@@ -87,7 +87,7 @@ function TeacherItem(props) {
             </div>
             <p className="box-progress-percentage">8/12</p>
           </div> */}
-          <div className="sir-container">
+          {/* <div className="sir-container">
             {[
               { name: "كيمياء", count: 0 },
               { name: "علوم", count: 0 },
@@ -98,7 +98,7 @@ function TeacherItem(props) {
                 </span>
               );
             })}
-          </div>
+          </div> */}
 
           <div className="project-box-footer">
             <div className="participants">
