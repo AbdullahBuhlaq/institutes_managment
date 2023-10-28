@@ -27,8 +27,8 @@ const Calendar = (props) => {
     let calendarApi = selectInfo.view.calendar;
 
     calendarApi.unselect();
-    const id = 1;
-    // const id = props.currentSchedule[props.currentClassSession].data.length ? parseInt(props.currentSchedule[props.currentClassSession].data[props.currentSchedule[props.currentClassSession].data.length - 1].id) + 1 : 1;
+    // const id = 1;
+    const id = props.currentSchedule[props.currentClassSession].data.length ? parseInt(props.currentSchedule[props.currentClassSession].data[props.currentSchedule[props.currentClassSession].data.length - 1].id) + 1 : 1;
     if (title) {
       calendarApi.addEvent({
         id: id,
@@ -112,6 +112,7 @@ const Calendar = (props) => {
   };
 
   useEffect(() => {
+    console.log(currentClassSession);
     if (!props.currentSchedule[props.currentClassSession]) props.setCurrentSchedule({ ...props.currentSchedule, [props.currentClassSession]: { data: [] } });
   }, []);
 

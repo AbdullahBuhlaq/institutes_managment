@@ -31,7 +31,7 @@ function Courses(props) {
     const [addSubject, setAddSubject] = useState(false);
     const [addTeacherForm, setAddTeacherForm] = useState(false);
     const [addStudentForm, setAddStudentForm] = useState(false);
-    const [currentClassSession, setCurrentClassSession] = useState(false);
+    const [currentClassSession, setCurrentClassSession] = useState(1);
     const [currentCourseStudents, setCurrentCourseStudents] = useState(false);
     const [currentSchedule, setCurrentSchedule] = useState(_.cloneDeep(props.institute.branches[props.openBranch]?.schedule));
     const [currentAddSession, setCurrentAddSession] = useState(1);
