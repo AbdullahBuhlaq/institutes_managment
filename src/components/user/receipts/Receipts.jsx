@@ -55,7 +55,7 @@ function Receipts(props) {
       setFirstRender(false);
     };
 
-    populateArray();
+    if (props.receipts) populateArray();
   }, [props.search, props.receipts, cardsNumber]);
 
   async function deleteReceipt(id) {
