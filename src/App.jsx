@@ -27,6 +27,7 @@ function App() {
 
   return (
     <>
+      {console.log(`${import.meta.env.VITE_URL}/auth/login`)}
       <ToastContainer />
       <BrowserRouter>
         <Routes>
